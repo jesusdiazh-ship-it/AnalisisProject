@@ -47,7 +47,7 @@ if opcion == "🏠 Inicio / Acerca de":
     * **Docente:** Ing. Carlos Cohen M.
     * **Institución:** Corporación Universitaria del Caribe (CECAR)
     * **Facultad:** Ciencias Básicas, Ingeniería y Arquitectura
-    * **Autores:** [Coloca aquí los nombres de tu grupo]
+    * **Autores:** [Samuel Sanches, Jesús Díaz]
     * **Semestre:** 2026-I
     """)
 
@@ -146,11 +146,11 @@ elif opcion == "📈 Métodos de Interpolación":
     df_err = pd.DataFrame(errores, columns=['Error Lineal', 'Error Polinomial (Lagrange/Newton)', 'Error Trazador Cúbico'])
     err_medios = df_err.mean()
 
-    # Mostrar estimación puntual en tarjetas estéticas
+ # --- MOSTRAR ESTIMACIÓN PUNTUAL EN TARJETAS ESTÉTICAS (CORREGIDO) ---
     col1, col2, col3 = st.columns(3)
-    col1.metric("Interpolación Lineal", f"{pred_lin:.3f} °C", f"Error Promedio: {err_medios[0]:.3f}")
-    col2.metric("Polinomio Lagrange/Newton", f"{pred_pol:.3f} °C", f"Error Promedio: {err_medios[1]:.3f}", delta_color="inverse")
-    col3.metric("Trazador Cúbico (Spline)", f"{pred_spl:.3f} °C", f"Error Promedio: {err_medios[2]:.3f}", delta_color="off")
+    col1.metric("Interpolación Lineal", f"{pred_lin:.3f} °C", f"Error Promedio: {err_medios['Error Lineal']:.3f}")
+    col2.metric("Polinomio Lagrange/Newton", f"{pred_pol:.3f} °C", f"Error Promedio: {err_medios['Error Lineal']:.3f}", delta_color="inverse")
+    col3.metric("Trazador Cúbico (Spline)", f"{pred_spl:.3f} °C", f"Error Promedio: {err_medios['Error Trazador Cúbico']:.3f}", delta_color="off")
 
     # --- PANELES VISUALES (GRÁFICAS INDIVIDUALES Y CONJUNTAS) ---
     st.markdown("---")
